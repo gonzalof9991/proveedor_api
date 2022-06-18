@@ -23,4 +23,9 @@ class Product extends Model
         return $this->belongsTo(Category::class,'category_id');
     }
 
+    public function ticket(): BelongsTo
+    {
+        return $this->belongsTo(Tickets::class,'ticket_id');
+    }
+
 }

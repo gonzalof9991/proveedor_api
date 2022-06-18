@@ -20,11 +20,13 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('price')->nullable();
             $table->integer('stock')->nullable();
+            $table->integer('amount')->nullable();
             $table->text('image_url')->nullable();
             $table->boolean('status')->default(true)->nullable();
             $table->boolean('is_recommended')->default(false)->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('ticket_id')->nullable();
             $table->timestamps(); // Fecha de creación / actualización
             $table->softDeletes(); // Fecha de eliminación
         });

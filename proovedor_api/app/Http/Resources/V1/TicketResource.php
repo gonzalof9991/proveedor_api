@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\Api\V1;
 
-use App\Models\Product;
+use App\Http\Resources\V1\ProductResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryResource extends JsonResource
+class TicketResource extends JsonResource
 {
 
     public function toArray($request)
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'nro_ticket' => $this->nro_ticket,
             'status' => $this->status,
             'products' =>  ProductResource::collection($this->whenLoaded('products')),
         ];
     }
-
 }

@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->unsignedBigInteger('type_of_user_id')->nullable();
+            $table->string('nro_ticket')->nullable();
+            $table->string('name')->nullable();
+            $table->text('send_to')->nullable();
+            $table->integer('total_price')->nullable();
+            $table->boolean('status')->default(true)->nullable();
+            $table->unsignedBigInteger('user')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tickets');
     }
 };
