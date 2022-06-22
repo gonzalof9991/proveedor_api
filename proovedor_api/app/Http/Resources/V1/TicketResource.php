@@ -15,6 +15,7 @@ class TicketResource extends JsonResource
             'nro_ticket' => $this->nro_ticket,
             'send_to' => $this->send_to,
             'total_price' => $this->total_price,
+            'amount' => $this->amount,
             'products' =>  ProductResource::collection($this->whenLoaded('products'))
         ];
     }

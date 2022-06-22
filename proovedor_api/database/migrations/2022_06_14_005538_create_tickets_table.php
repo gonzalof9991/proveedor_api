@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->text('send_to')->nullable();
             $table->integer('total_price')->nullable();
+            $table->integer('amount')->nullable();
             $table->boolean('status')->default(true)->nullable();
             $table->unsignedBigInteger('user')->nullable();
             $table->timestamps();

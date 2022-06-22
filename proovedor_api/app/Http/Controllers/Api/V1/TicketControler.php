@@ -34,7 +34,8 @@ class TicketControler extends Controller
             "nro_ticket" => "nro-".$ticketId,
             "name" => $request->json(['name']),
             "send_to" => $request->json(['send_to']),
-            "total_price" => $request->json(['total_price'])
+            "total_price" => $request->json(['total_price']),
+            "amount" => $request->json(['amount'])
         ];
         $ticket = Tickets::create($data);
         return TicketResource::make($ticket);
