@@ -11,7 +11,8 @@ class ProductController extends Controller
     public function index()
     {
         //url contra la que atacamos
-        $ch = curl_init("https://apiseguridad.azure-api.net/proveedor/products");
+        //$ch = curl_init("https://apiseguridad.azure-api.net/proveedor/products");
+        $ch = curl_init("https://claudiorigollet.cl/api/products");
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
@@ -30,8 +31,9 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //url contra la que atacamos
-        $ch = curl_init("https://apiseguridad.azure-api.net/proveedor/products");
+        // URL
+        //$ch = curl_init("https://apiseguridad.azure-api.net/proveedor/products");
+        $ch = curl_init("https://claudiorigollet.cl/api/products");
 
         $data = [
             'name' => $request->json(['name']),
@@ -63,24 +65,11 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

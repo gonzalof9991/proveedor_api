@@ -26,7 +26,6 @@ return new class extends Migration
             $table->boolean('is_recommended')->default(false)->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
-            $table->unsignedBigInteger('ticket_id')->nullable();
             $table->timestamps(); // Fecha de creación / actualización
             $table->softDeletes(); // Fecha de eliminación
         });

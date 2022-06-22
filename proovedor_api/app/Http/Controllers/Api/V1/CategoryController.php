@@ -20,9 +20,13 @@ class CategoryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request): CategoryResource
     {
-        //
+        $categoryId = Category::query()->get('id')->last();
+        $categoryId = $categoryId->id + 1;
+
+        $category = Category::create();
+        return CategoryResource::make($category);
     }
 
 

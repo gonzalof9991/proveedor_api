@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tickets extends Model
 {
@@ -11,9 +12,9 @@ class Tickets extends Model
 
     protected $guarded = [];
 
-    public function products(): BelongsTo
-    {
-        return $this->hasMany(Product::class,'ticket_id');
-    }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class,'product_ticket','ticket_id','product_id');
+    }
 }

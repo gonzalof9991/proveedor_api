@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Resources\Api\V1;
+namespace App\Http\Resources\V1;
 
-use App\Http\Resources\V1\ProductResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TicketResource extends JsonResource
@@ -12,9 +11,11 @@ class TicketResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'name' => $this->name,
             'nro_ticket' => $this->nro_ticket,
-            'status' => $this->status,
-            'products' =>  ProductResource::collection($this->whenLoaded('products')),
+            'send_to' => $this->send_to,
+            'total_price' => $this->total_price,
+            'products' =>  ProductResource::collection($this->whenLoaded('products'))
         ];
     }
 }

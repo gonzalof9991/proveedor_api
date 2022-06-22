@@ -17,13 +17,11 @@ class ProductResource extends JsonResource
             'price' => $this->price,
             'stock' => $this->stock,
             'image_url' => $this->image_url,
-            'status' => $this->status,
             'is_recommended' => $this->is_recommended,
             'category' =>  CategoryResource::make($this->whenLoaded('category')),
             'brand' =>  BrandResource::make($this->whenLoaded('brand')),
-
+            'tickets' =>  TicketResource::collection($this->whenLoaded('tickets')),
         ];
     }
-
 
 }
