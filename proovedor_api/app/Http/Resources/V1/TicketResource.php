@@ -16,6 +16,8 @@ class TicketResource extends JsonResource
             'send_to' => $this->send_to,
             'total_price' => $this->total_price,
             'amount' => $this->amount,
+            'created' => $this->created_at,
+            'updated' => $this->updated_at,
             'products' =>  ProductResource::collection($this->whenLoaded('products'))
         ];
     }
