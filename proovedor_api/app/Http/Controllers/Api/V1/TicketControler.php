@@ -12,7 +12,7 @@ class TicketControler extends Controller
     public function index()
     {
         $tickets = Tickets::query()
-            ->with(['products'])
+            ->with(['products','users'])
             ->get();
         return TicketResource::collection($tickets);
     }
@@ -35,7 +35,8 @@ class TicketControler extends Controller
             "name" => $request->json(['name']),
             "send_to" => $request->json(['send_to']),
             "total_price" => $request->json(['total_price']),
-            "amount" => $request->json(['amount'])
+            "amount" => $request->json(['amount']),
+            "user_id" => $request->json(['user_id'])
         ];
         $ticket = Tickets::create($data);
         return TicketResource::make($ticket);
@@ -45,9 +46,10 @@ class TicketControler extends Controller
     public function show($id)
     {
         $ticket = Tickets::query()
-            ->with(['products'])
+            ->with(['products','users'])
             ->find($id);
-        echo $ticket;
+        return TicketResource::make($ticket);
+
     }
 
 

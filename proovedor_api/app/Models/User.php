@@ -52,4 +52,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function ticket(){
+        return $this->hasMany(Tickets::class,'user_id');
+    }
 }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('total_price')->nullable();
             $table->integer('amount')->nullable();
             $table->boolean('status')->default(true)->nullable();
-            $table->unsignedBigInteger('user')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
