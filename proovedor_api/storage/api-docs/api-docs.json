@@ -1,0 +1,112 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Proovedor",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://proveedor-api.herokuapp.com/api/v1/"
+        }
+    ],
+    "paths": {
+        "/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Mostrar Productos",
+                "operationId": "838694051b1fed802e7bf569cb85e748",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos los productos."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Mostrar información de un producto",
+                "description": "Display the specified resource.\nMuestra el registro solicitado",
+                "operationId": "7ee7741efd25486d9bdd749068e5e4c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parámetro necesario para la consulta de datos de un producto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar info de una producto."
+                    },
+                    "404": {
+                        "description": "No se ha encontrado el producto."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/tickets": {
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Mostrar Tickets",
+                "operationId": "70d82870f761abe8309aeca7a9cbbafc",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos los productos."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/tickets/{id}": {
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Mostrar información de un ticket",
+                "description": "Display the specified resource.\nMuestra el registro solicitado",
+                "operationId": "45e6726ef9fccfa45a79cc141888cdaf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parámetro necesario para la consulta de datos de un ticket",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar información de un ticket."
+                    },
+                    "404": {
+                        "description": "No se ha encontrado el ticket."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    }
+}
