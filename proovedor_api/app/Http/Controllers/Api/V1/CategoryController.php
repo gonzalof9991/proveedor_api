@@ -22,30 +22,52 @@ class CategoryController extends Controller
 
     public function store(Request $request): CategoryResource
     {
-        $categoryId = Category::query()->get('id')->last();
+        echo $request->json(['name']);
+        $categoryId = Category::query()->get('id')->max();
         $categoryId = $categoryId->id + 1;
-
-        $category = Category::create();
+        $data = [
+            "id" => $categoryId,
+            "name" => $request->json(['name'])
+        ];
+        $category = Category::create($data);
         return CategoryResource::make($category);
     }
 
 
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        try {
+            $category = Category::query()
+                ->with(['products'])
+                ->find($id);
+            if(isset($category)){
+                return new CategoryResource($category);
+            }else{
+                return 'No existe';
+            }
 
-        return new CategoryResource($category);
+        }catch (\Exception $error){
+            return 500;
+        }
+
     }
 
 
     public function update(Request $request, Category $category)
     {
-        //
+        $data = [
+            "name" => $request->json(['name']),
+        ];
+        $categoryId = $category->getAttribute('id');
+        $categoryId = Category::query()->find($categoryId);
+        $category->update($data);
+        return CategoryResource::make($category);
     }
 
 
-    public function destroy(Category $category)
+    public function destroy( $id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
     }
 }

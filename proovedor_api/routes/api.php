@@ -25,6 +25,7 @@ Route::apiResource('v1/tickets', \App\Http\Controllers\Api\V1\TicketControler::c
 Route::apiResource('v1/users', \App\Http\Controllers\Api\V1\UserController::class);
 Route::apiResource('v1/stock/products', \App\Http\Controllers\Api\V1\Stock\ProductController::class);
 Route::apiResource('v1/products_tickets', \App\Http\Controllers\Api\V1\ProductTicketController::class);
+Route::apiResource('v1/facturas', \App\Http\Controllers\Api\V1\Contabilidad\FacturaController::class);
 
 Route::get('/', [\App\Http\Controllers\Api\V1\HomeController::class,'index'])->name('home');
 

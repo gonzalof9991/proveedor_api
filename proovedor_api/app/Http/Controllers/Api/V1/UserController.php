@@ -40,12 +40,7 @@ class UserController extends Controller
         return UserResource::make($user);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $user = User::query()
@@ -54,26 +49,27 @@ class UserController extends Controller
         return UserResource::make($user);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, User $user)
     {
-        //
+        echo $request->json(['type_of_user_id']);
+        $data = [
+            "name" => $request->json(['name']),
+            "password" => $request->json(['password']),
+            "email" => $request->json(['email']),
+            "type_of_user_id" => $request->json(['type_of_user_id'])
+        ];
+
+        $userId = $user->getAttribute('id');
+        $userId = User::query()->find($userId);
+        $user->update($data);
+        return UserResource::make($user);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
     }
 }
